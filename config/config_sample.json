@@ -1,0 +1,22 @@
+{
+  "anime": [
+    {
+      "name": "\"Oshi no Ko\"",
+      "episodes": 0
+    },
+    {
+      "name": "Tengoku Daimakyou",
+      "episodes": 0
+    },
+    {
+      "name": "Kimi wa Houkago Insomnia",
+      "episodes": 0
+    },
+    {
+      "name": "Jigokuraku",
+      "episodes": 0
+    }
+  ],
+  "interval": 60,
+  "webhookUrl": "https://example.com"
+}
