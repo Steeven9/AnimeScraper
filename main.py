@@ -16,7 +16,7 @@ def fetch_episodes(anime_title: str) -> Tuple[int, str]:
         anime_category_url=search_result[0].category_url)
     num_episodes = len(episodes_urls)
 
-    return (num_episodes, search_result[0].category_url)
+    return (num_episodes, episodes_urls[-1])
 
 
 if __name__ == "__main__":
@@ -38,7 +38,6 @@ if __name__ == "__main__":
             print(notif_str)
 
             data = {
-                "username": "AnimeScraper",
                 "content": notif_str,
             }
             requests.post(url=options["webhookUrl"], data=data)
