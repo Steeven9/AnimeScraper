@@ -31,7 +31,7 @@ if __name__ == "__main__":
             episodes, url = fetch_episodes(anime["name"])
             if episodes > anime["episodes"]:
                 anime["episodes"] = episodes
-                new_episodes.append(f"{anime['name']} ({url}) ep {episodes}")
+                new_episodes.append(f"{anime['name']} ep {episodes} - {url}")
 
         if len(new_episodes) > 0:
             notif_str = f"New episodes found!\n{', '.join(new_episodes)}"
