@@ -10,11 +10,13 @@ file_path = "config/config.json"
 
 
 def fetch_episodes(anime_title: str) -> Tuple[int, str]:
-    '''Returns the number of episodes for a given anime title'''
+    '''Returns the number of episodes and the latest
+      episode link for a given anime title'''
     search_result = api.search_anime(anime_title=anime_title)
     episodes_urls = api.get_episode_urls(
         anime_category_url=search_result[0].category_url)
-    num_episodes = len(episodes_urls)
+    # extract latest episode from URL
+    num_episodes = int(episodes_urls[-1].split("-")[-1])
 
     return (num_episodes, episodes_urls[-1])
 
