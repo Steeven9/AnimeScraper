@@ -5,8 +5,13 @@ from typing import Tuple
 import requests
 from pynimeapi import PyNime
 
-api = PyNime(base_url="https://gogoanime.llc")
+# Read config
 file_path = "config/config.json"
+f = open(file_path, "r")
+options = json.load(f)
+f.close()
+
+api = PyNime(base_url=options["apiUrl"])
 
 
 def fetch_episodes(anime_title: str) -> Tuple[int, str]:
@@ -22,9 +27,6 @@ def fetch_episodes(anime_title: str) -> Tuple[int, str]:
 
 
 if __name__ == "__main__":
-    f = open(file_path, "r")
-    options = json.load(f)
-    f.close()
     print("Starting AnimeScraper watching following anime:", options["anime"])
 
     while True:
