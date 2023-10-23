@@ -1,23 +1,18 @@
 {
   "anime": [
     {
-      "name": "\"Oshi no Ko\"",
-      "episodes": 0
-    },
-    {
-      "name": "Tengoku Daimakyou",
-      "episodes": 0
-    },
-    {
       "name": "Kimi wa Houkago Insomnia",
-      "episodes": 0
-    },
-    {
-      "name": "Jigokuraku",
-      "episodes": 0
+      "latest_episode": 0
     }
   ],
-  "interval": 10,
-  "webhookUrl": "https://example.com",
-  "apiUrl": "https://example.com"
+  "manga": [
+    {
+      "name": "Kimi wa Houkago Insomnia",
+      "url": "https://example.com/rss/kimi_wa_houkago_insomnia.xml",
+      "latest_chapter": 0
+    }
+  ],
+  "scrape_interval": 10,
+  "webhook_url": "https://example.com",
+  "gogoanime_api_url": "https://example.com"
 }
