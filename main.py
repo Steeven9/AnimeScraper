@@ -28,20 +28,23 @@ def fetch_episodes(anime_title: str) -> Tuple[int, str]:
     return (num_episodes, episodes_urls[-1])
 
 
-def fetch_chapters(manga) -> Tuple[int, int, str]:
+def fetch_chapters(manga) -> Tuple[int, float, str]:
     """Returns the number of chapters and the latest
     chapter link for a given manga title"""
     data = fp.parse(manga["url"])
-    url = data["entries"][0]["link"]
-    volume = url.split("/")[5][1:]
-    chapter = url.split("/")[6][1:]
-    return (int(volume), int(chapter), url)
+    try:
+        url = data["entries"][0]["link"]
+        volume = url.split("/")[5][1:]
+        chapter = url.split("/")[6][1:]
+    except IndexError:
+        raise ValueError(f"Invalid URL for {manga['name']}")
+    return (int(volume), float(chapter), url)
 
 
 if __name__ == "__main__":
     print("Starting AnimeScraper...")
-    print("Watching following anime:", config["anime"])
-    print("Watching following manga:", config["manga"])
+    print("Watching following anime:", {anime["name"] for anime in config["anime"]})
+    print("Watching following manga:", {manga["name"] for manga in config["manga"]})
 
     while True:
         new_content = []
@@ -49,19 +52,21 @@ if __name__ == "__main__":
             current_episode, url = fetch_episodes(anime["name"])
             if current_episode > anime["latest_episode"]:
                 anime["latest_episode"] = current_episode
-                new_content.append(f"{anime['name']} ep {current_episode} - {url}")
+                new_content.append(
+                    f"{' '.join(anime['followers'])} 🎬 {anime['name']} ep {current_episode} - {url}"
+                )
 
         for manga in config["manga"]:
             current_volume, current_chapter, url = fetch_chapters(manga)
             if current_chapter > manga["latest_chapter"]:
                 manga["latest_chapter"] = current_chapter
                 new_content.append(
-                    f"{manga['name']} vol {current_volume} ch {current_chapter} - {url}"
+                    f"{' '.join(manga['followers'])} 📚 {manga['name']} vol {current_volume} ch {current_chapter} - {url}"
                 )
 
         if len(new_content) > 0:
             links = "\n".join(new_content)
-            notif_str = f"New episodes found! :partying_face: \n{links}"
+            notif_str = f"New episodes found! 🥳 \n{links}"
             print(notif_str)
 
             data = {
