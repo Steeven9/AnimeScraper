@@ -20,8 +20,7 @@ def fetch_episodes(anime_title: str) -> Tuple[int, str]:
     episode link for a given anime title"""
     search_result = api.search_anime(anime_title=anime_title)
     episodes_urls = api.get_episode_urls(
-        anime_category_url=search_result[0].category_url
-    )
+        anime_category_url=search_result[0].category_url)
     # extract latest episode from URL
     num_episodes = int(episodes_urls[-1].split("-")[-1])
 
@@ -43,8 +42,12 @@ def fetch_chapters(manga) -> Tuple[int, float, str]:
 
 if __name__ == "__main__":
     print("Starting AnimeScraper...")
-    print("Watching following anime:", {anime["name"] for anime in config["anime"]})
-    print("Watching following manga:", {manga["name"] for manga in config["manga"]})
+    print("Watching following anime:",
+          {anime["name"]
+           for anime in config["anime"]})
+    print("Watching following manga:",
+          {manga["name"]
+           for manga in config["manga"]})
 
     while True:
         new_content = []
@@ -53,7 +56,7 @@ if __name__ == "__main__":
             if current_episode > anime["latest_episode"]:
                 anime["latest_episode"] = current_episode
                 new_content.append(
-                    f"{' '.join(anime['followers'])} 🎬 {anime['name']} ep {current_episode} - {url}"
+                    f"{' '.join(anime['followers'])} 🎬 {anime['name']} ep {current_episode} - [Watch]({url}) - [MAL]({anime['MAL_url']})"
                 )
 
         for manga in config["manga"]:
@@ -61,12 +64,12 @@ if __name__ == "__main__":
             if current_chapter > manga["latest_chapter"]:
                 manga["latest_chapter"] = current_chapter
                 new_content.append(
-                    f"{' '.join(manga['followers'])} 📚 {manga['name']} vol {current_volume} ch {current_chapter} - {url}"
+                    f"{' '.join(manga['followers'])} 📚 {manga['name']} vol {current_volume} ch {current_chapter} - [Read]({url}) - [MAL]({manga['MAL_url']})"
                 )
 
         if len(new_content) > 0:
             links = "\n".join(new_content)
-            notif_str = f"New episodes found! 🥳 \n{links}"
+            notif_str = f"New stuff found! 🥳 \n{links}"
             print(notif_str)
 
             data = {

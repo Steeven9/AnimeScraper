@@ -2,6 +2,7 @@
   "anime": [
     {
       "name": "Kimi wa Houkago Insomnia",
+      "MAL_url": "https://myanimelist.net/anime/50796/Kimi_wa_Houkago_Insomnia",
       "latest_episode": 0,
       "followers": ["<@userID>"]
     }
@@ -10,6 +11,7 @@
     {
       "name": "Kimi wa Houkago Insomnia",
       "url": "https://example.com/rss/kimi_wa_houkago_insomnia.xml",
+      "MAL_url": "https://myanimelist.net/manga/121213/Kimi_wa_Houkago_Insomnia",
       "latest_chapter": 0,
       "followers": ["<@userID>"]
     }
