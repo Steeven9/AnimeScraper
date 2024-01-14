@@ -12,7 +12,6 @@ Sends a webhook notification when a new anime episode releases.
 First install the dependencies:
 
 ```bash
-pip install deps/*.whl
 pip install -r requirements.txt
 ```
 
