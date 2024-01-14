@@ -15,8 +15,5 @@
       "latest_chapter": 0,
       "followers": ["<@userID>"]
     }
-  ],
-  "scrape_interval": 10,
-  "webhook_url": "https://example.com",
-  "gogoanime_api_url": "https://example.com"
+  ]
 }
