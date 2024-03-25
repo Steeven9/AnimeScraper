@@ -2,4 +2,4 @@ feedparser==6.0.10
 requests==2.31.0
 discord-py-interactions==3.0.2
 discord.py==1.7.3
-pynimeapi @ git+https://github.com/yoshikuniii/pynime.git@4b6209ffcdfb6815e2a1b272df79a3b07eddfbe6
+pynimeapi @ git+https://github.com/yoshikuniii/pynime.git@68187b6208189fc42df44f418cd2862a82284461
